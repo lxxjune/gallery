@@ -7,6 +7,9 @@ html {
   font-family: Arial, sans-serif;
   background-color: #131313;
   color: #fff;
+  min-width: 584px;
+  max-width: 1920px;
+  margin: 0 auto;
   overflow-x: hidden; /* 가로 스크롤 방지 */
 }
 
@@ -21,6 +24,11 @@ button {
 
 /* Header */
 .header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
   display: flex;
   justify-content: space-between; /* 로고와 내비게이션 양쪽 정렬 */
   align-items: center;
@@ -57,9 +65,17 @@ button {
 
 /* Introduction Section */
 .intro {
+  height: calc(
+    100vh - 60px
+  ); /* 가변적인 애한테 함수 적용해서 고정값을 뺴는 것 calculator */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   text-align: center;
   padding: 128px 64px 64px;
+  position: relative;
   overflow: hidden;
+  box-sizing: border-box;
 }
 
 .intro h1 {
@@ -92,22 +108,52 @@ button {
 }
 
 .scroll-down {
+  position: absolute;
+  left: 50%;
+  bottom: 0px;
+  transform: translate(-50%, 0);
+  /* 
+  혹시 align-items: center;
+  이렇게 쓰면 안되나요?  
+  -> 앱솔루트 처리시, 플렉스가 먹는게 아니라서 안댐
+  최소 높이 지정해주면 위로 올려도 댐
+  */
   font-size: 40px;
   opacity: 50%;
   animation: bounce 2s infinite;
   cursor: pointer;
 }
 
+/* 스크롤바 스타일링 */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #000;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #333;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+∫
 /* Projects Section */
 .projects {
+  min-height: 100vh;
   text-align: left;
-  padding: 40px 40px;
+  padding: 64px 40px;
 }
 
 .projects h2 {
   font-size: 40px;
   font-weight: normal;
   margin-bottom: 16px;
+  margin-left: 40px;
 }
 /* 이미지 그리드 설정*/
 .grid {
@@ -115,19 +161,63 @@ button {
   grid-template-columns: repeat(3, 1fr);
   gap: 20px;
   margin: 0 auto;
+  padding: 0 20px;
 }
 
 .box {
-  width: 100%;
-  padding-top: 100%;
-  background-color: #fff;
   position: relative;
-  display: block;
+  width: 100%;
+  aspect-ratio: 1/1; /* 정사각형 비율 유지 */
+  overflow: hidden; /*clip contents*/
+  transition: transform 0.3s ease;
   cursor: pointer;
 }
 
+.box img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+  /* 호버를 위한 전환 */
+}
+
 .box:hover {
-  background-color: #aaa;
+  transform: scale(1.02); /* 살짝 확대 */
+}
+
+.box:hover img {
+  transform: scale(1.1); /* 이미지 확대 */
+}
+
+.box::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.3); /* 어두운 오버레이 */
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.box:hover::after {
+  opacity: 1;
+}
+
+/* 반응형 처리 */
+@media screen and (max-width: 768px) {
+  .grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .grid {
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
 }
 
 /* Keyframe Animations */
