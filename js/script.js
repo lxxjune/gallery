@@ -19,6 +19,12 @@ document.addEventListener("DOMContentLoaded", () => {
   navButtons.forEach((button) => {
     button.addEventListener("click", () => {
       const category = button.dataset.category;
+
+      //ALL btn
+      if (category === "all") {
+        boxes.forEach((box) => (box.style.display = "block"));
+        return;
+      }
       boxes.forEach((box) => {
         if (box.classList.contains(category)) {
           box.style.display = "block";

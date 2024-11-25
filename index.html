@@ -1,16 +1,27 @@
 <!DOCTYPE html>
+<!-- html 문서 선언 -->
 <html lang="en">
+  <!-- 영어 기본 언어로 설정 -->
   <head>
+    <!-- 헤드 섹션 -->
     <meta charset="UTF-8" />
+    <!-- UTF 문자 인코딩 사용-->
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- 뷰포트 범위 설정 -->
     <title>Portfolio - JUNE</title>
+    <!-- 사이트 제목 설정-->
     <link rel="stylesheet" href="css/styles.css" />
+    <!--  css 파일 연결 -->
   </head>
   <body>
     <!-- Header -->
     <header class="header">
-      <div class="logo" id="reset-button">✧/ JUNE</div>
+      <!-- 헤더 구역 정의 -->
+      <div class="logo" id="reset-button">6/ JUNE</div>
+      <!-- 클래스 로고로 지정. 아이디는 reset button / 표시 6/JUNE-->
       <nav class="navigation">
+        <!-- 네비게이션 지정 -->
+        <!-- data category = 필터링 기능 구현을 위한 지정 -->
         <button class="nav-btn" data-category="all">ALL</button>
         <button class="nav-btn" data-category="branding">BRANDING</button>
         <button class="nav-btn" data-category="motion">MOTION</button>
@@ -20,7 +31,11 @@
 
     <!-- Introduction Section -->
     <section class="intro">
-      <h1 id="intro-text">JUNE <span>( born in )</span> FEB</h1>
+      <!-- 소개 구역 지정-->
+      <h1 id="intro-text">
+        JUNE <span>( <span> born in </span> )</span> FEB
+      </h1>
+      <!-- 소개 제목 내용 설정 -->
       <p>
         Hello! I'm JUNE. My Korean name is Jiyoon Lee.<br />
         If you read this quickly, it reads as JUNE, so I set the English name to
@@ -29,12 +44,14 @@
         Korean.
       </p>
       <div class="scroll-down" id="scroll-down">⬇</div>
+      <!-- 화살표 지정 -->
     </section>
 
     <!-- Projects Section -->
     <section class="projects" id="projects">
       <h2>PROJECT</h2>
       <div class="grid">
+        <!-- 그리드로 섹션 분류 -->
         <!-- Images with classification -->
         <a href="branding1.html" class="box branding"></a>
         <a href="motion1.html" class="box motion"></a>
